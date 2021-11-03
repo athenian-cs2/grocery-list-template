@@ -1,29 +1,64 @@
-# Dog Class
+# Grocery List Class
 
-In this assignment, you'll be practicing inheritance and implementing a Dog class to represent dogs.
+In this assignment, you'll be implementing a class to represent a grocery list. This class will use an **array** to keep track of what the user has added to the grocery list. 
 
-You should first check out the [Pet.java](src/main/java/Pet.java) file. This class will be the superclass (parent class) of your Dog class. 
+The user will be able to add stuff to the grocery list, remove stuff from the grocery list, and print out the grocery list. Accordingly, you will write the three following methods, in addition to a constructor:
+* public void add(String item)
+* public void remove(String item)
+* public String toString()
 
-The Pet Class has the following components:
-* Private instance variables for name and age
-* Two constructors to create a Pet (one default and one with two parameters)
-* makeNoise(): a non-static method that just prints out an animal noise
-* toString() method to print out the Pet's name and age
-* Getters and setters for all two variables
+You should add code to the [GroceryList.java](src/main/java/GroceryList.java) file.
 
-Now, check add code to [Dog.java](src/main/java/Dog.java). This class will inherit the instance variables and methods from the Pet class. Your Dog class should have the following components (note that it will inherit many of these components):
-* Private instance variables for name, age, and **breed**
-* Two constructors to create a Dog (one default and one with three parameters)
-* makeNoise(): a non-static method that just prints out **an appropriate animal noise for a Dog**
-* toString() method to print out the Dog's name, age, and **breed**
-* Getters and setters for all **three** variables
+**Note that none of the tests will work until toString() works**
 
-You should code to [Dog.java](src/main/java/Dog.java) to define the class, and then add code to [DogClient.java](src/main/java/DogClient.java) to test your code
+##### Examples:
 
-The [Person.java](src/main/java/Person.java) and [Student.java](src/main/java/Student.java) classes are included as examples of a superclass and subclass, respectively. 
+Here are some examples of how each of the methods will work:
+Assume that our list is called list1 and that we've already added "eggs" and "milk" to our list. list1 would look something like:
+
+| eggs | milk | null | null | null | null |
+|------|------|------|------|------|------|
+
+Note that _null_ is a special value that represents that a String or object doesn't exist yet. You can check if a slot in the array is _null_ by using `==` such as: `if (arr[0] == null)`
+
+###### add():
+
+The **add()** method should add the data to the first empty (null) slot of our array. For example:
+
+| eggs | milk | null | null | null | null |
+|------|------|------|------|------|------|
+
+`list1.add("oranges");`
+
+| eggs | milk | oranges | null | null | null |
+|------|------|------|------|------|------|
+
+###### remove():
+
+The **remove()** method should remove the matching data value if its finds it. If a data value is removed, you should shift all the later data values to the left.
+
+| eggs | milk | oranges | null | null | null |
+|------|------|------|------|------|------|
+
+`list1.remove("eggs");`
+
+| milk | oranges | null | null | null | null |
+|------|------|------|------|------|------|
+
+###### toString():
+
+The **toString()** method should return a String containing all elements in your array. It should skip the _null_ values. 
+
+| eggs | milk | oranges | null | null | null |
+|------|------|------|------|------|------|
+
+`System.out.println(list1);`
+
+`Grocery List: eggs, milk, oranges`
+
 
 ## Run your code with:
-The easiest way to run your code is to press the play button in [DogClient.java](src/main/java/DogClient.java).
+The easiest way to run your code is to press the play button in [Client.java](src/main/java/Client.java).
 
 However, you can also run your code by typing the following into the Terminal.
 

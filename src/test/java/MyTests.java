@@ -3,26 +3,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MyTests {
-
-    // This test is testing that your two constructors are set up properly
     @Test
-    public void testConstructor() {
-        assertNotNull(new Dog(), "The no argument constructor did not work; calling new Dog() caused an error");
-        assertNotNull(new Dog("Riley", 3, "Golden Retriever"), "The no argument constructor did not work; calling new Dog() caused an error");
+    public void testAdd() {
+        GroceryList list1 = new GroceryList();
+        list1.add("milk");
+        assertEquals("Grocery List: milk", list1.toString().trim().replaceFirst(",$", ""), "Adding milk to an empty list should give: \"Grocery List: milk\"");
+        list1.add("eggs");
+        list1.add("cereal");
+        assertEquals("Grocery List: milk, eggs, cereal", list1.toString().trim().replaceFirst(",$", ""), "Adding eggs and cereal should give: \"Grocery List: milk\"");
     }
 
-    // This test is testing your getters
     @Test
-    public void testGetters() {
-        assertEquals("Poodle", new Dog("Steve", 1, "Poodle").getBreed(), "Your getBreed method does not work!");
-    }
-
-    // This test is testing your setters
-    @Test
-    public void testSetters() {
-        Dog d1 = new Dog("Lily", 1, "Dachshund");
-        d1.setBreed("Mixed");
-        assertEquals("Mixed", d1.getBreed(), "Your setBreed method does not work!");
+    public void testRemove() {
+        GroceryList list1 = new GroceryList();
+        list1.add("milk");
+        list1.add("eggs");
+        list1.add("cereal");
+        list1.remove("milk");
+        assertEquals("Grocery List: eggs, cereal", list1.toString().trim().replaceFirst(",$", ""), "Removing milk should give: \"Grocery List: eggs, cereal\"");
+        list1.remove("cereal");
+        assertEquals("Grocery List: eggs", list1.toString().trim().replaceFirst(",$", ""), "Removing cereal should give: \"Grocery List: eggs\"");
     }
     
 }
