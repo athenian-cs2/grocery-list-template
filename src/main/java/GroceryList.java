@@ -1,5 +1,6 @@
 public class GroceryList {
     private String[] arr;
+    // You may want to add another instance variable here!
 
     // Creates a new empty Grocery List of size 10
     // Remember to create the array!
